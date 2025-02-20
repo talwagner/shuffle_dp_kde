@@ -350,6 +350,8 @@ def test_shuffled_dp_kde(train_classes, queries, query_labels, privacy="none", e
         return success_rate, final_epsilon, []
     print("Doing class decoding")
     queries = np.load(os.path.join(FILE_PATH, "glove50emb.npy"), allow_pickle=True)
+    # vocab needs to created to contain an n-by-d numpy array, where n is the number of temrs in "glove50emb.npy", and d=768 is 
+    # is the embedding dimension of SBERT_MODEL_NAME, with each row containing the embedding of the corresponding line in "glove50emb.npy"
     vocab = eval(open(os.path.join(FILE_PATH, "glove50embwords.npy")).read())
     class_decoding_output = []
     for i in range(len(dpkde_list)):
